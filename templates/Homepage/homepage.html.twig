@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5 text-center">
+    <h1 class="mb-4">Welcome to Sketchy ToDo's</h1>
+    <p class="lead">Manage your tasks with ease using our App</p>
+
+    {% if not app.user %}
+        <a href="{{ path('app_login') }}" class="btn btn-primary btn-lg mt-3">Login</a>
+    {% else %}
+        <a href="{{ path('todo') }}" class="btn btn-success btn-lg mt-3">View My Todos</a>
+    {% endif %}
+</div>
+{% endblock %}
