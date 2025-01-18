@@ -16,7 +16,9 @@
         <ul class="list-group">
             {% for todo in todos %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="badge bg-success"></span>
                     {{ todo.getDescription() }}
+                    <span class="text-body-tertiary">{{todo.getStartDateTime().format("d/m/y")}} at {{todo.getStartDateTime().format("H:i:s")}}</span>
                     <form method="post" action="{{ path('todo_delete', {'id': todo.getId()}) }}">
                         <button class="btn btn-danger">Delete</button>
                     </form>
