@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Register</h1>
+
+        {{ form_start(registrationForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+            <div class="mb-3">
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                {% if form_errors(registrationForm.email) %}
+                    <div class="invalid-feedback">
+                        {{ form_errors(registrationForm.email) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form_label(registrationForm.plainPassword) }}
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                {% if form_errors(registrationForm.plainPassword) %}
+                    <div class="invalid-feedback">
+                        {{ form_errors(registrationForm.plainPassword) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-check mb-3">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                {% if form_errors(registrationForm.agreeTerms) %}
+                    <div class="invalid-feedback">
+                        {{ form_errors(registrationForm.agreeTerms) }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
